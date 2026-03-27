@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Zanzibar Tours & Activities — Beach, Culture & Safari</title>
-  <meta name="description" content="Zanzibar island tours and activities — beaches, Stone Town, spice farms, safari fly-ins"/>
+  <title>Tours & Packages</title>
+  <meta name="description" content="Safari tour packages Tanzania — Southern Circuit from $600"/>
   <meta name="keywords" content="Tanzania safari, Morogoro tours, Southern Circuit safari, wildlife Tanzania, Zanzibar tours"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
@@ -30,6 +30,21 @@
     .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
     @media(max-width:900px){.content-grid{grid-template-columns:1fr;padding:60px 20px}.section-intro{padding:40px 20px 0}.cta-band{padding:60px 20px}}
   </style>
+<style>
+.tour-cats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;padding:40px 60px 60px;background:var(--sand)}
+.tour-cat-card{text-decoration:none;background:var(--white);overflow:hidden;transition:transform .4s,box-shadow .4s;display:flex;flex-direction:column}
+.tour-cat-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.12)}
+.tour-cat-card img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .7s}
+.tour-cat-card:hover img{transform:scale(1.07)}
+.tour-cat-body{padding:18px;flex:1;display:flex;flex-direction:column}
+.tour-cat-num{font-family:var(--serif);font-size:2rem;color:var(--accent);font-weight:300;line-height:1;display:block;margin-bottom:8px}
+.tour-cat-title{font-family:var(--serif);font-size:1.05rem;color:var(--deep);line-height:1.2;margin-bottom:6px}
+.tour-cat-sub{font-size:.78rem;color:var(--muted);line-height:1.55;margin-bottom:12px;flex:1}
+.tour-cat-meta{display:flex;justify-content:space-between;font-size:.68rem;color:var(--earth);font-weight:500;border-top:1px solid rgba(0,0,0,.07);padding-top:10px;margin-top:auto}
+@media(max-width:1100px){.tour-cats-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.tour-cats-grid{grid-template-columns:1fr 1fr;padding:30px 18px}[style*="padding:0 60px"]{padding:0 18px 20px!important}}
+@media(max-width:500px){.tour-cats-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
@@ -58,7 +73,7 @@
       <div class="nav-logo-sub">The Authentic Experience</div>
     </div>
   </a>
-  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="tours.html">Tours</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="about.html">About</a></li><li><a href="zanzibar.html"class="active">Zanzibar</a></li><li><a href="kilimanjaro.html">Kilimanjaro</a></li><li><a href="souvenirs.html">Souvenirs</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="tours.html"class="active">Tours</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="about.html">About</a></li><li><a href="zanzibar.html">Zanzibar</a></li><li><a href="kilimanjaro.html">Kilimanjaro</a></li><li><a href="souvenirs.html">Souvenirs</a></li><li><a href="contact.html">Contact</a></li></ul>
   <div class="nav-right">
     <select class="nav-lang" onchange="switchLang(this.value)">
       <option value="en">&#x1F310; EN</option><option value="fr">FR</option>
@@ -71,14 +86,71 @@
   </div>
 </nav>
 <div class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1600&q=85')"></div>
-  <div class="page-hero-content"><span class="page-hero-eyebrow">Zanzibar Island</span><h1 class="page-hero-title">Zanzibar — The <em>Spice Island</em></h1></div>
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=85')"></div>
+  <div class="page-hero-content"><span class="page-hero-eyebrow">All Packages</span><h1 class="page-hero-title">Our <em>Signature</em> Tours</h1></div>
 </div>
 <div class="trust-bar"><div class="trust-item"><span class="trust-dot"></span>TTLB Licensed</div><div class="trust-item"><span class="trust-dot"></span>BSc Wildlife Science</div><div class="trust-item"><span class="trust-dot"></span>Based in Morogoro</div><div class="trust-item"><span class="trust-dot"></span>Fiat &amp; Crypto Accepted</div></div>
 <div class="section-intro reveal">
   <span class="section-tag">Ghikas Adventures</span>
-  <h2 class="section-title">Zanzibar — The <em>Spice Island</em></h2>
+  <h2 class="section-title">Our <em>Signature</em> Tours</h2>
   <p>Expert-guided journeys through Tanzania's most extraordinary landscapes. Every tour personally led by Jonathan Ghikas — Wildlife Scientist and licensed safari guide based in Morogoro.</p>
+</div>
+
+<div class="section-intro reveal" style="padding-top:70px">
+  <span class="section-tag">Special Experience Categories</span>
+  <h2 class="section-title">Handcrafted Journeys for <em>Thoughtful Travellers</em></h2>
+  <p style="font-size:.93rem;line-height:1.78;color:var(--muted);margin-top:14px">Beyond standard game drives — five deep-experience categories built around purpose, meaning and Tanzania's wildest places.</p>
+</div>
+<div class="tour-cats-grid">
+  <a href="https://wa.me/255757247973?text=Hi!+Agro-Tourism+enquiry" target="_blank" class="tour-cat-card reveal">
+    <img src="https://images.pexels.com/photos/14314165/pexels-photo-14314165.jpeg" alt="Agro-Tourism" loading="lazy"/>
+    <div class="tour-cat-body">
+      <span class="tour-cat-num">01</span>
+      <h3 class="tour-cat-title">Agro-Tourism with Social Impact</h3>
+      <p class="tour-cat-sub">Farm the land. Feed a school. See the wild.</p>
+      <div class="tour-cat-meta"><span>8 Days</span><span>From $2,000 pp</span></div>
+    </div>
+  </a>
+  <a href="https://wa.me/255757247973?text=Hi!+OrphanCare+Adventure+enquiry" target="_blank" class="tour-cat-card reveal" style="transition-delay:.08s">
+    <img src="https://images.pexels.com/photos/36467878/pexels-photo-36467878.jpeg" alt="OrphanCare Adventure" loading="lazy"/>
+    <div class="tour-cat-body">
+      <span class="tour-cat-num">02</span>
+      <h3 class="tour-cat-title">OrphanCare Adventure</h3>
+      <p class="tour-cat-sub">Connect with children building something remarkable.</p>
+      <div class="tour-cat-meta"><span>10 Days</span><span>From $3,000 pp</span></div>
+    </div>
+  </a>
+  <a href="https://wa.me/255757247973?text=Hi!+Endangered+Species+Safari+enquiry" target="_blank" class="tour-cat-card reveal" style="transition-delay:.16s">
+    <img src="https://images.pexels.com/photos/7182178/pexels-photo-7182178.jpeg" alt="Endangered Species Safari" loading="lazy"/>
+    <div class="tour-cat-body">
+      <span class="tour-cat-num">03</span>
+      <h3 class="tour-cat-title">Endangered Species Sanctuary Safari</h3>
+      <p class="tour-cat-sub">Before they are gone — see them, fund their protection.</p>
+      <div class="tour-cat-meta"><span>10 Days</span><span>From $7,200 pp</span></div>
+    </div>
+  </a>
+  <a href="https://wa.me/255757247973?text=Hi!+Ultimate+East+African+Odyssey+enquiry" target="_blank" class="tour-cat-card reveal" style="transition-delay:.24s">
+    <img src="https://images.pexels.com/photos/30929410/pexels-photo-30929410.jpeg" alt="Ultimate Odyssey" loading="lazy"/>
+    <div class="tour-cat-body">
+      <span class="tour-cat-num">04</span>
+      <h3 class="tour-cat-title">Ultimate East African Odyssey</h3>
+      <p class="tour-cat-sub">From Rwanda's volcanoes to Zanzibar's spice markets.</p>
+      <div class="tour-cat-meta"><span>30 Days</span><span>From $15,000 pp</span></div>
+    </div>
+  </a>
+  <a href="https://wa.me/255757247973?text=Hi!+Custom+safari+enquiry" target="_blank" class="tour-cat-card reveal" style="transition-delay:.32s">
+    <img src="https://images.pexels.com/photos/5369453/pexels-photo-5369453.jpeg" alt="Custom Tour" loading="lazy"/>
+    <div class="tour-cat-body">
+      <span class="tour-cat-num">05</span>
+      <h3 class="tour-cat-title">Custom Special Tour</h3>
+      <p class="tour-cat-sub">Tell us what moves you. We will build it.</p>
+      <div class="tour-cat-meta"><span>Any Duration</span><span>Price on Request</span></div>
+    </div>
+  </a>
+</div>
+<div style="padding:0 60px 20px;text-align:center">
+  <h2 class="section-title" style="margin-bottom:12px">Our <em>Signature</em> Packages</h2>
+  <p style="font-size:.92rem;color:var(--muted);max-width:560px;margin:0 auto 40px;line-height:1.72">Expert-guided journeys from Morogoro. Every tour personally led by Jonathan Ghikas.</p>
 </div>
 <div class="content-grid">
   <div class="content-card reveal"><img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80" alt="Safari" loading="lazy"/><div class="content-body"><span class="content-tag">Safari · Wildlife</span><h3 class="content-title">Mikumi Wildlife Blitz</h3><p class="content-text">Tanzania's most accessible safari. Lions, elephants and giraffe on the Mkata floodplain. No flight needed. Perfect from Dar es Salaam.</p><div class="content-footer"><span class="content-price">From $600 · 2 Days</span><a href="https://wa.me/255757247973?text=Hi! Mikumi Wildlife Blitz enquiry." target="_blank" class="content-btn">→</a></div></div></div>

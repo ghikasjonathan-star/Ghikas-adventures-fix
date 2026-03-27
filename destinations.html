@@ -2,34 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Tanzania Souvenirs — Tanzanite, Maasai Crafts & Art</title>
-  <meta name="description" content="Tanzania souvenirs — Tanzanite gemstones, Maasai crafts, art and unique keepsakes from Ghikas Adventures"/>
+  <title>Safari Destinations Tanzania — Nyerere, Mikumi, Ruaha, Zanzibar</title>
+  <meta name="description" content="Six extraordinary safari destinations in Tanzania — Nyerere, Mikumi, Ruaha, Udzungwa, Zanzibar, Serengeti"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    .content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:80px 60px;background:var(--white)}
-    .content-card{background:var(--sand);overflow:hidden;cursor:pointer;transition:transform .4s}
-    .content-card:hover{transform:translateY(-6px)}
-    .content-card img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .7s}
-    .content-card:hover img{transform:scale(1.05)}
-    .content-body{padding:24px}
-    .content-tag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
-    .content-title{font-family:var(--serif);font-size:1.4rem;color:var(--deep);margin-bottom:10px;line-height:1.2}
-    .content-text{font-size:.84rem;line-height:1.65;color:var(--muted);margin-bottom:18px}
-    .content-footer{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid rgba(0,0,0,.08)}
-    .content-price{font-size:.78rem;color:var(--earth)}
-    .content-btn{width:34px;height:34px;background:var(--deep);display:flex;align-items:center;justify-content:center;color:var(--white);text-decoration:none;transition:background .3s}
-    .content-card:hover .content-btn{background:var(--accent);color:var(--deep)}
-    .stones-banner{background:var(--deep);padding:70px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-    .stones-banner .section-title{color:var(--white)}
-    .stones-text{font-size:.92rem;line-height:1.82;color:rgba(255,255,255,.55);margin:18px 0 32px}
-    .cta-band{background:var(--deep);padding:70px 60px;text-align:center}
-    .cta-band h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:var(--white);margin-bottom:14px}
-    .cta-band h2 em{font-style:italic;color:var(--stone)}
-    .cta-band p{font-size:.92rem;color:rgba(255,255,255,.5);max-width:480px;margin:0 auto 32px;line-height:1.72}
-    .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-    @media(max-width:900px){.content-grid{grid-template-columns:1fr;padding:60px 18px}.stones-banner{grid-template-columns:1fr;padding:60px 18px}.cta-band{padding:60px 18px}}
-  </style>
+.dest-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:80px 60px;background:var(--white)}
+.dest-full-card{background:var(--sand);overflow:hidden;transition:transform .4s,box-shadow .4s;display:flex;flex-direction:column}
+.dest-full-card:hover{transform:translateY(-6px);box-shadow:0 16px 44px rgba(0,0,0,.12)}
+.dest-full-img{position:relative;height:260px;overflow:hidden;flex-shrink:0}
+.dest-full-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s}
+.dest-full-card:hover .dest-full-img img{transform:scale(1.07)}
+.dest-full-overlay{position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:linear-gradient(to top,rgba(28,24,16,.7),transparent);display:flex;justify-content:space-between;align-items:flex-end}
+.dest-full-tag{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.dest-full-size{font-size:.6rem;color:rgba(255,255,255,.6)}
+.dest-full-body{padding:26px;flex:1;display:flex;flex-direction:column}
+.dest-full-name{font-family:var(--serif);font-size:1.5rem;color:var(--deep);margin-bottom:12px;line-height:1.2}
+.dest-full-desc{font-size:.85rem;line-height:1.68;color:var(--muted);margin-bottom:20px;flex:1}
+@media(max-width:1100px){.dest-full-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.dest-full-grid{grid-template-columns:1fr;padding:60px 18px}}
+</style>
 </head>
 <body>
 
@@ -57,7 +49,7 @@
       <div class="nav-logo-sub">The Authentic Experience</div>
     </div>
   </a>
-  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="tours.html">Tours</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="about.html">About</a></li><li><a href="zanzibar.html">Zanzibar</a></li><li><a href="kilimanjaro.html">Kilimanjaro</a></li><li><a href="souvenirs.html"class="active">Souvenirs</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="tours.html">Tours</a></li><li><a href="destinations.html"class="active">Destinations</a></li><li><a href="about.html">About</a></li><li><a href="zanzibar.html">Zanzibar</a></li><li><a href="kilimanjaro.html">Kilimanjaro</a></li><li><a href="souvenirs.html">Souvenirs</a></li><li><a href="contact.html">Contact</a></li></ul>
   <div class="nav-right">
     <select class="nav-lang" onchange="switchLang(this.value)">
       <option value="en">&#x1F310; EN</option><option value="fr">FR</option>
@@ -70,8 +62,8 @@
   </div>
 </nav>
 <div class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('https://i.postimg.cc/cLH70v4s/Optimized-tte2-web-2.jpg')"></div>
-  <div class="page-hero-content"><span class="page-hero-eyebrow">Take Tanzania Home</span><h1 class="page-hero-title">Souvenirs &amp; <em>Keepsakes</em></h1></div>
+  <div class="page-hero-bg" style="background-image:url('https://images.pexels.com/photos/10768835/pexels-photo-10768835.jpeg')"></div>
+  <div class="page-hero-content"><span class="page-hero-eyebrow">Where We Go</span><h1 class="page-hero-title">Six <em>Extraordinary</em><br>Destinations</h1></div>
 </div>
 <div class="trust-bar">
   <div class="trust-item"><span class="trust-dot"></span>TTLB Licensed Guide</div>
@@ -80,103 +72,104 @@
   <div class="trust-item"><span class="trust-dot"></span>Southern Circuit Specialist</div>
   <div class="trust-item"><span class="trust-dot"></span>Fiat &amp; Crypto Accepted</div>
 </div>
-<div class="stones-banner">
-  <div class="reveal">
-    <span class="section-tag">Our Flagship Experience</span>
-    <h2 class="section-title">Stones &amp; <em>Savannah</em></h2>
-    <p class="stones-text">Tanzania is one of the world's most mineral-rich countries — and most visitors never know it. Tanzanite — found only in the Merelani Hills near Kilimanjaro — is one thousand times rarer than diamond. The Stones &amp; Savannah concept pairs wildlife safaris with visits to Tanzania's legendary gemstone markets.</p>
-    <a href="https://wa.me/255757247973?text=Hi!+Stones+and+Savannah+enquiry" target="_blank" class="btn-primary">Ask About Gemstones</a>
-  </div>
-  <div class="reveal">
-    <img src="https://i.postimg.cc/kMstG7HS/The-Perfect-Beginning-to-2026-Mark-Milestones-with-Tanzanite-Jewelry.jpg" alt="Tanzanite" style="width:100%;height:360px;object-fit:cover;display:block" loading="lazy"/>
-  </div>
-</div>
 <div class="section-intro reveal" style="padding-top:70px">
-  <span class="section-tag">Handcrafted Souvenirs</span>
-  <h2 class="section-title">Take Tanzania <em>Home</em></h2>
-  <p style="font-size:.93rem;line-height:1.78;color:var(--muted);margin-top:14px">Ethically sourced. Artisan made. International shipping available.</p>
+  <span class="section-tag">Ghikas Adventures</span>
+  <h2 class="section-title">Six <em>Extraordinary</em> Destinations</h2>
+  <p style="font-size:.93rem;line-height:1.78;color:var(--muted);margin-top:14px">Six ecosystems. One expert guide. One starting point — Morogoro, Tanzania.</p>
 </div>
-<div class="content-grid">
+<div class="dest-full-grid">
   
-<div class="content-card reveal" style="transition-delay:0.0s">
-  <img src="https://images.pexels.com/photos/20618740/pexels-photo-20618740.jpeg" alt="Maasai Beadwork" loading="lazy"/>
-  <div class="content-body">
-    <span class="content-tag">Crafts · Jewellery</span>
-    <h3 class="content-title">Maasai Beadwork</h3>
-    <p class="content-text">Handcrafted beaded jewellery by Maasai artisans. Each piece carries cultural meaning in its colours and patterns. Sourced directly from Maasai communities with fair-trade pricing.</p>
-    <div class="content-footer">
-      <span class="content-price">Jonathan Ghikas · Morogoro</span>
-      <a href="https://wa.me/255757247973?text=Hi!+Maasai+Beadwork+enquiry" target="_blank" class="content-btn">→</a>
+<div class="dest-full-card reveal" id="nyerere" style="transition-delay:0.0s">
+  <div class="dest-full-img">
+    <img src="https://images.pexels.com/photos/5151051/pexels-photo-5151051.jpeg" alt="Nyerere National Park" loading="lazy"/>
+    <div class="dest-full-overlay">
+      <span class="dest-full-tag">Rufiji River · Boat Safari</span>
+      <span class="dest-full-size">54,600 sq km</span>
     </div>
   </div>
-</div>
-<div class="content-card reveal" style="transition-delay:0.08s">
-  <img src="https://images.pexels.com/photos/7637401/pexels-photo-7637401.jpeg" alt="Maasai Memory Bead" loading="lazy"/>
-  <div class="content-body">
-    <span class="content-tag">Unique Keepsake</span>
-    <h3 class="content-title">Maasai Memory Bead</h3>
-    <p class="content-text">Our signature keepsake — a single beaded pendant made with a Maasai artisan during your safari, representing your journey's highlight. Branded with a small Ghikas Adventures charm.</p>
-    <div class="content-footer">
-      <span class="content-price">Jonathan Ghikas · Morogoro</span>
-      <a href="https://wa.me/255757247973?text=Hi!+Maasai+Memory+Bead+enquiry" target="_blank" class="content-btn">→</a>
-    </div>
+  <div class="dest-full-body">
+    <h3 class="dest-full-name">Nyerere National Park</h3>
+    <p class="dest-full-desc">Africa's largest game reserve. Rufiji River boat safari — hippos, wild dogs, crocodiles at arm's reach. UNESCO World Heritage Site.</p>
+    <a href="https://wa.me/255757247973?text=Hi!+Nyerere+National+Park+enquiry" target="_blank" class="btn-primary" style="font-size:.7rem;padding:12px 24px;margin-top:auto;align-self:flex-start">Book Now →</a>
   </div>
 </div>
-<div class="content-card reveal" style="transition-delay:0.16s">
-  <img src="https://i.postimg.cc/kMstG7HS/The-Perfect-Beginning-to-2026-Mark-Milestones-with-Tanzanite-Jewelry.jpg" alt="Tanzanite Gemstones" loading="lazy"/>
-  <div class="content-body">
-    <span class="content-tag">Rare Gemstones · Tanzania Only</span>
-    <h3 class="content-title">Tanzanite Gemstones</h3>
-    <p class="content-text">Found only in the Merelani Hills near Kilimanjaro — 1,000× rarer than diamond. Trichroic stone that changes colour in different light. Ethically sourced from certified dealers.</p>
-    <div class="content-footer">
-      <span class="content-price">Jonathan Ghikas · Morogoro</span>
-      <a href="https://wa.me/255757247973?text=Hi!+Tanzanite+Gemstones+enquiry" target="_blank" class="content-btn">→</a>
+<div class="dest-full-card reveal" id="mikumi" style="transition-delay:0.07s">
+  <div class="dest-full-img">
+    <img src="https://images.pexels.com/photos/18039302/pexels-photo-18039302.jpeg" alt="Mikumi National Park" loading="lazy"/>
+    <div class="dest-full-overlay">
+      <span class="dest-full-tag">Open Plains · Home Park</span>
+      <span class="dest-full-size">3,230 sq km</span>
     </div>
   </div>
-</div>
-<div class="content-card reveal" style="transition-delay:0.24s">
-  <img src="https://i.postimg.cc/NGDptq7p/Screenshot-8-1.jpg" alt="Tanzanian Paintings" loading="lazy"/>
-  <div class="content-body">
-    <span class="content-tag">Art · Tingatinga Style</span>
-    <h3 class="content-title">Tanzanian Paintings</h3>
-    <p class="content-text">Tingatinga-style paintings and watercolours by local artists depicting wildlife, landscapes and village life. All pieces are originals signed by the artist.</p>
-    <div class="content-footer">
-      <span class="content-price">Jonathan Ghikas · Morogoro</span>
-      <a href="https://wa.me/255757247973?text=Hi!+Tanzanian+Paintings+enquiry" target="_blank" class="content-btn">→</a>
-    </div>
+  <div class="dest-full-body">
+    <h3 class="dest-full-name">Mikumi National Park</h3>
+    <p class="dest-full-desc">Tanzania's most accessible safari — our home park. Lions on the Mkata floodplain, elephant herds year-round. Departs from Dar es Salaam.</p>
+    <a href="https://wa.me/255757247973?text=Hi!+Mikumi+National+Park+enquiry" target="_blank" class="btn-primary" style="font-size:.7rem;padding:12px 24px;margin-top:auto;align-self:flex-start">Book Now →</a>
   </div>
 </div>
-<div class="content-card reveal" style="transition-delay:0.32s">
-  <img src="https://i.postimg.cc/yx2KxgCB/Common-African-Souvenirs-and-Crafts-Stock-Photo-Image-of-street-2006939277-3.jpg" alt="Wood Carvings" loading="lazy"/>
-  <div class="content-body">
-    <span class="content-tag">Handcrafted Sculptures</span>
-    <h3 class="content-title">Wood Carvings</h3>
-    <p class="content-text">Hand-carved ebony and rosewood sculptures of African wildlife and Maasai figures by master craftsmen in Morogoro. Each piece is unique — no two are alike.</p>
-    <div class="content-footer">
-      <span class="content-price">Jonathan Ghikas · Morogoro</span>
-      <a href="https://wa.me/255757247973?text=Hi!+Wood+Carvings+enquiry" target="_blank" class="content-btn">→</a>
+<div class="dest-full-card reveal" id="ruaha" style="transition-delay:0.14s">
+  <div class="dest-full-img">
+    <img src="https://images.pexels.com/photos/5729293/pexels-photo-5729293.jpeg" alt="Ruaha National Park" loading="lazy"/>
+    <div class="dest-full-overlay">
+      <span class="dest-full-tag">Wild Dogs · Elephants</span>
+      <span class="dest-full-size">20,226 sq km</span>
     </div>
   </div>
+  <div class="dest-full-body">
+    <h3 class="dest-full-name">Ruaha National Park</h3>
+    <p class="dest-full-desc">Wild dog capital of Africa. Greatest concentration of African wild dogs on the continent. Vast elephant herds, baobab forests, the Great Ruaha River.</p>
+    <a href="https://wa.me/255757247973?text=Hi!+Ruaha+National+Park+enquiry" target="_blank" class="btn-primary" style="font-size:.7rem;padding:12px 24px;margin-top:auto;align-self:flex-start">Book Now →</a>
+  </div>
 </div>
-<div class="content-card reveal" style="transition-delay:0.4s">
-  <img src="https://images.pexels.com/photos/2802527/pexels-photo-2802527.jpeg" alt="Coffee & Spices" loading="lazy"/>
-  <div class="content-body">
-    <span class="content-tag">Zanzibar Flavours</span>
-    <h3 class="content-title">Coffee & Spices</h3>
-    <p class="content-text">Tanzanian single-origin coffee, Zanzibar cloves, vanilla, cinnamon and cardamom — beautifully packaged for travel. A taste of Tanzania to take home.</p>
-    <div class="content-footer">
-      <span class="content-price">Jonathan Ghikas · Morogoro</span>
-      <a href="https://wa.me/255757247973?text=Hi!+Coffee+&+Spices+enquiry" target="_blank" class="content-btn">→</a>
+<div class="dest-full-card reveal" id="udzungwa" style="transition-delay:0.21000000000000002s">
+  <div class="dest-full-img">
+    <img src="https://i.postimg.cc/V642rSny/udzungwa-1-2048x1154.jpg" alt="Udzungwa Mountains" loading="lazy"/>
+    <div class="dest-full-overlay">
+      <span class="dest-full-tag">Rainforest · Hiking</span>
+      <span class="dest-full-size">1,990 sq km</span>
     </div>
+  </div>
+  <div class="dest-full-body">
+    <h3 class="dest-full-name">Udzungwa Mountains</h3>
+    <p class="dest-full-desc">Ancient rainforest. The only park in Tanzania where the main activity is on foot. Sanje Waterfall at 170m — swim at the base.</p>
+    <a href="https://wa.me/255757247973?text=Hi!+Udzungwa+Mountains+enquiry" target="_blank" class="btn-primary" style="font-size:.7rem;padding:12px 24px;margin-top:auto;align-self:flex-start">Book Now →</a>
+  </div>
+</div>
+<div class="dest-full-card reveal" id="zanzibar" style="transition-delay:0.28s">
+  <div class="dest-full-img">
+    <img src="https://images.pexels.com/photos/5859090/pexels-photo-5859090.jpeg" alt="Zanzibar Island" loading="lazy"/>
+    <div class="dest-full-overlay">
+      <span class="dest-full-tag">Beach · Spice · Culture</span>
+      <span class="dest-full-size">1,651 sq km</span>
+    </div>
+  </div>
+  <div class="dest-full-body">
+    <h3 class="dest-full-name">Zanzibar Island</h3>
+    <p class="dest-full-desc">Turquoise beaches, Swahili history, spice gardens. Stone Town is UNESCO World Heritage. The perfect bush-and-beach finale to any safari.</p>
+    <a href="https://wa.me/255757247973?text=Hi!+Zanzibar+Island+enquiry" target="_blank" class="btn-primary" style="font-size:.7rem;padding:12px 24px;margin-top:auto;align-self:flex-start">Book Now →</a>
+  </div>
+</div>
+<div class="dest-full-card reveal" id="serengeti" style="transition-delay:0.35000000000000003s">
+  <div class="dest-full-img">
+    <img src="https://images.pexels.com/photos/5369453/pexels-photo-5369453.jpeg" alt="Serengeti National Park" loading="lazy"/>
+    <div class="dest-full-overlay">
+      <span class="dest-full-tag">Great Migration · Big Five</span>
+      <span class="dest-full-size">14,763 sq km</span>
+    </div>
+  </div>
+  <div class="dest-full-body">
+    <h3 class="dest-full-name">Serengeti National Park</h3>
+    <p class="dest-full-desc">The Great Migration — 1.5 million wildebeest, 400,000 zebra. Year-round Big Five. Africa's most iconic stage.</p>
+    <a href="https://wa.me/255757247973?text=Hi!+Serengeti+National+Park+enquiry" target="_blank" class="btn-primary" style="font-size:.7rem;padding:12px 24px;margin-top:auto;align-self:flex-start">Book Now →</a>
   </div>
 </div>
 </div>
 <div class="cta-band">
-  <h2>Enquire About <em>Souvenirs</em></h2>
-  <p>Items sourced from artisan communities with fair-trade pricing. International shipping available on request.</p>
+  <h2>Choose Your <em>Destination</em></h2>
+  <p>Send a WhatsApp message and we design the perfect itinerary around your chosen parks.</p>
   <div class="cta-actions">
-    <a href="https://wa.me/255757247973?text=Hi!+Souvenirs+enquiry" target="_blank" class="btn-primary">WhatsApp Us</a>
-    <a href="mailto:info@ghikasadventures.com" class="btn-outline">Email Us</a>
+    <a href="https://wa.me/255757247973?text=Hi+Jonathan!+Destinations+enquiry" target="_blank" class="btn-primary">WhatsApp Us Now</a>
+    <a href="contact.html" class="btn-outline">Send Enquiry Form</a>
   </div>
 </div>
 <footer>
