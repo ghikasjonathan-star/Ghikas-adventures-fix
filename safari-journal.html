@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Safari Journal — Stories, insights and everything you need to know before your Tanzania adventure. By Ghikas Adventures, Morogoro." />
+  <link rel="canonical" href="https://ghikasadventures.com/safari-journal.html" />
+  <title>Safari Journal — Tales from the Wild | Ghikas Adventures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0f0d0a; color: #e8dcc8; line-height: 1.7; overflow-x: hidden; }
+    :root {
+      --gold: #c9a84c; --gold2: #e0bf72; --brown: #3b1f0e;
+      --cream: #f0e6d0; --dark: #0f0d0a; --mid: #1a1510;
+      --card: #171310; --border: rgba(201,168,76,0.18);
+      --text: #c8bba6; --serif: 'Playfair Display', Georgia, serif;
+    }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: #0a0806; border-bottom: 1px solid var(--border);
+      padding: 7px 32px; display: flex; justify-content: space-between; align-items: center;
+      font-size: 11px; color: var(--gold); letter-spacing: .08em;
+    }
+    .top-bar-social { display: flex; align-items: center; gap: 16px; }
+    .top-bar-social a { opacity: .7; transition: opacity .2s; display: flex; align-items: center; }
+    .top-bar-social a:hover { opacity: 1; }
+    .top-bar-social svg { width: 14px; height: 14px; fill: var(--gold); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(10,8,6,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px; display: flex; align-items: center;
+      justify-content: space-between; height: 64px;
+    }
+    .nav-logo { display: flex; flex-direction: column; line-height: 1.15; }
+    .nav-logo .brand { font-family: var(--serif); font-size: 18px; color: var(--gold); letter-spacing: .04em; }
+    .nav-logo .tagline { font-size: 9px; letter-spacing: .18em; color: var(--text); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text); transition: color .2s; padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: 18px; }
+    .nav-social { display: flex; gap: 14px; }
+    .nav-social a { opacity: .6; transition: opacity .2s; display: flex; align-items: center; }
+    .nav-social a:hover { opacity: 1; }
+    .nav-social svg { width: 15px; height: 15px; fill: var(--gold); }
+    .nav-enquire {
+      background: var(--gold); color: #0f0d0a;
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; padding: 9px 20px; border-radius: 2px;
+      transition: background .2s; white-space: nowrap;
+    }
+    .nav-enquire:hover { background: var(--gold2); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--gold); display: block; }
+
+    /* ── MOBILE DRAWER ── */
+    .mobile-overlay {
+      display: none; position: fixed; inset: 0; z-index: 400;
+      background: rgba(0,0,0,.5);
+    }
+    .mobile-overlay.open { display: block; }
+    .mobile-drawer {
+      position: fixed; top: 0; right: -320px; width: 300px; height: 100vh;
+      background: #0a0806; z-index: 500; padding: 0;
+      border-left: 1px solid var(--border);
+      transition: right .3s ease; overflow-y: auto;
+    }
+    .mobile-drawer.open { right: 0; }
+    .drawer-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 24px; border-bottom: 1px solid var(--border);
+    }
+    .drawer-header .brand { font-family: var(--serif); font-size: 16px; color: var(--gold); }
+    .drawer-close { background: none; border: none; color: var(--gold); font-size: 22px; cursor: pointer; line-height: 1; }
+    .drawer-nav { padding: 12px 0; }
+    .drawer-nav a {
+      display: block; padding: 13px 24px;
+      font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text); border-bottom: 1px solid rgba(201,168,76,.07);
+      transition: color .2s, background .2s;
+    }
+    .drawer-nav a:hover, .drawer-nav a.active { color: var(--gold); background: rgba(201,168,76,.05); }
+    .drawer-social {
+      display: flex; gap: 20px; padding: 20px 24px;
+      border-top: 1px solid var(--border); margin-top: 8px;
+    }
+    .drawer-social a { opacity: .6; transition: opacity .2s; }
+    .drawer-social a:hover { opacity: 1; }
+    .drawer-social svg { width: 18px; height: 18px; fill: var(--gold); }
+    .drawer-cta { padding: 0 24px 24px; }
+    .drawer-cta a {
+      display: block; text-align: center; background: var(--gold);
+      color: #0f0d0a; font-size: 12px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 13px; border-radius: 2px; margin-top: 4px;
+    }
+
+    /* ── WA FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 150;
+      background: #25d366; color: #fff; padding: 12px 18px;
+      border-radius: 50px; font-size: 13px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .wa-float:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,.5); }
+    .wa-float svg { width: 18px; height: 18px; fill: #fff; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: #0a0806; border-bottom: 1px solid var(--border);
+      padding: 11px 48px; font-size: 11px; letter-spacing: .08em; color: var(--text);
+    }
+    .breadcrumb a { color: var(--gold); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 8px; opacity: .4; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 88vh; min-height: 520px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.pexels.com/photos/26689570/pexels-photo-26689570.jpeg?auto=compress&cs=tinysrgb&w=1600');
+      background-size: cover; background-position: center 40%;
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom { from { transform: scale(1.03); } to { transform: scale(1.10); } }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,8,6,.92) 0%, rgba(10,8,6,.45) 55%, rgba(10,8,6,.18) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 860px; padding: 0 48px 72px; }
+    .hero-eyebrow {
+      display: inline-block; font-size: 11px; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+      border: 1px solid var(--border); padding: 5px 14px; border-radius: 2px;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 700; line-height: 1.08; color: #fff; margin-bottom: 20px;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: rgba(240,230,208,.8); max-width: 560px; line-height: 1.65; margin-bottom: 36px; }
+    .hero-badges { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-badge {
+      font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--text); border: 1px solid var(--border);
+      padding: 5px 12px; border-radius: 2px;
+    }
+    .scroll-hint {
+      position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+      z-index: 2; text-align: center; color: var(--text); font-size: 10px;
+      letter-spacing: .14em; text-transform: uppercase;
+      animation: bounce 2.4s infinite;
+    }
+    .scroll-hint::after { content: '↓'; display: block; font-size: 18px; color: var(--gold); margin-top: 4px; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+    /* ── ARTICLE CARDS ── */
+    .article-card {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 600px; border-bottom: 1px solid var(--border);
+    }
+    .article-card.reverse { }
+    .article-img-col { position: relative; overflow: hidden; min-height: 500px; }
+    .article-img-col img {
+      position: absolute; inset: 0; height: 100%; object-fit: cover;
+      transition: transform .8s ease;
+    }
+    .article-card:hover .article-img-col img { transform: scale(1.04); }
+    .img-badge {
+      position: absolute; top: 24px; left: 24px; z-index: 2;
+      background: var(--gold); color: #0f0d0a;
+      font-size: 10px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; padding: 5px 12px; border-radius: 2px;
+    }
+    .article-card.reverse .img-badge { left: auto; right: 24px; }
+    .article-text-col {
+      padding: 64px 56px; display: flex; flex-direction: column;
+      justify-content: center; background: var(--card);
+    }
+    .article-card.reverse .article-text-col { order: -1; }
+    .art-eyebrow { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .art-title { font-family: var(--serif); font-size: clamp(1.6rem, 2.4vw, 2.2rem); font-weight: 700; line-height: 1.18; color: var(--cream); margin-bottom: 20px; }
+    .art-title em { color: var(--gold); font-style: italic; }
+    .art-divider { width: 48px; height: 2px; background: var(--gold); margin-bottom: 24px; }
+    .art-body { font-size: .93rem; color: var(--text); line-height: 1.82; margin-bottom: 28px; }
+    .art-body p + p { margin-top: 14px; }
+    .art-thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+    .art-thumb { border-radius: 3px; overflow: hidden; }
+    .art-thumb img { height: 130px; border-radius: 3px; }
+    .art-thumb .thumb-cap { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: 7px; }
+    .art-highlights { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+    .art-highlights li { font-size: .86rem; color: var(--text); display: flex; align-items: flex-start; gap: 10px; }
+    .art-highlights li::before { content: '✦'; color: var(--gold); font-size: 9px; margin-top: 4px; flex-shrink: 0; }
+    .art-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; border: 1px solid var(--gold);
+      color: var(--gold); font-size: 11px; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: 11px 22px; border-radius: 2px;
+      transition: background .2s, color .2s; width: fit-content;
+    }
+    .art-cta:hover { background: var(--gold); color: #0f0d0a; }
+    .art-cta svg { width: 14px; height: 14px; fill: currentColor; transition: transform .2s; }
+    .art-cta:hover svg { transform: translateX(4px); }
+
+    /* ── SGR SECTION ── */
+    .sgr-section { background: var(--mid); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .sgr-hero-img { width: 100%; height: 480px; overflow: hidden; position: relative; }
+    .sgr-hero-img img { height: 100%; object-fit: cover; object-position: center; }
+    .sgr-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,8,6,.1) 0%, rgba(10,8,6,.68) 100%); }
+    .sgr-label { position: absolute; bottom: 36px; left: 48px; }
+    .sgr-label .sgr-badge { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+    .sgr-label h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 700; color: #fff; line-height: 1.15; }
+    .sgr-label h2 em { color: var(--gold); font-style: italic; }
+    .sgr-body { padding: 64px 80px; max-width: 1200px; margin: 0 auto; }
+    .sgr-intro { font-family: var(--serif); font-size: 1.2rem; color: var(--cream); line-height: 1.7; margin-bottom: 48px; max-width: 780px; }
+    .sgr-intro em { color: var(--gold); font-style: italic; }
+    .sgr-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 52px; }
+    .sgr-feat { border-left: 2px solid var(--gold); padding-left: 20px; }
+    .sgr-feat .feat-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+    .sgr-feat h4 { font-family: var(--serif); font-size: 1.05rem; color: var(--cream); margin-bottom: 8px; }
+    .sgr-feat p { font-size: .87rem; color: var(--text); line-height: 1.75; }
+    .sgr-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 48px; }
+    .sgr-photo { border-radius: 3px; overflow: hidden; position: relative; }
+    .sgr-photo img { height: 260px; border-radius: 3px; }
+    .sgr-photo .photo-cap {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(10,8,6,.85), transparent);
+      padding: 28px 18px 14px; font-size: 11px; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .sgr-info-strip {
+      background: rgba(201,168,76,.07); border: 1px solid var(--border);
+      border-radius: 4px; padding: 28px 36px;
+      display: flex; flex-wrap: wrap; gap: 32px; align-items: center; margin-bottom: 40px;
+    }
+    .sgr-info-item { text-align: center; flex: 1; min-width: 100px; }
+    .sgr-info-item strong { display: block; font-family: var(--serif); font-size: 1.6rem; color: var(--gold); line-height: 1.1; margin-bottom: 4px; }
+    .sgr-info-item span { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text); }
+    .sgr-cta-block { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .sgr-cta-block p { font-size: .93rem; color: var(--text); max-width: 600px; }
+    .sgr-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: #0f0d0a; font-size: 12px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: 14px 28px; border-radius: 2px; transition: background .2s, transform .2s;
+    }
+    .sgr-btn:hover { background: var(--gold2); transform: translateY(-2px); }
+    .sgr-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ── EXPLORE STRIP ── */
+    .explore-strip {
+      background: #0a0806; padding: 80px 48px; text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .explore-strip h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--cream); margin-bottom: 12px; }
+    .explore-strip h2 em { color: var(--gold); font-style: italic; }
+    .explore-strip p { color: var(--text); font-size: .95rem; margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .explore-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-gold { background: var(--gold); color: #0f0d0a; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 13px 26px; border-radius: 2px; transition: background .2s; }
+    .btn-gold:hover { background: var(--gold2); }
+    .btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 13px 26px; border-radius: 2px; transition: background .2s, color .2s; }
+    .btn-outline:hover { background: var(--gold); color: #0f0d0a; }
+
+    /* ── FOOTER ── */
+    footer { background: linear-gradient(to bottom, #0a0806, #070504); border-top: 1px solid var(--border); padding: 64px 48px 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand .brand-name { font-family: var(--serif); font-size: 22px; color: var(--gold); margin-bottom: 6px; }
+    .footer-brand .brand-tag { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--text); margin-bottom: 16px; }
+    .footer-brand p { font-size: .87rem; color: var(--text); line-height: 1.7; max-width: 280px; }
+    .footer-brand .f-payment { margin-top: 10px; font-size: 11px; color: var(--text); font-style: italic; }
+    .footer-social { display: flex; gap: 14px; margin-top: 18px; }
+    .footer-social a { opacity: .6; transition: opacity .2s; display: flex; align-items: center; }
+    .footer-social a:hover { opacity: 1; }
+    .footer-social svg { width: 18px; height: 18px; fill: var(--gold); }
+    .footer-col h4 { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: .87rem; color: var(--text); transition: color .2s; }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 12px; color: rgba(200,187,166,.4); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .nav-social { display: none; }
+      .nav-links { gap: 18px; }
+      .nav-links a { font-size: 11px; }
+    }
+    @media (max-width: 860px) {
+      .nav-links, .nav-enquire { display: none; }
+      .hamburger { display: flex; }
+      .article-card { grid-template-columns: 1fr; }
+      .article-card.reverse .article-text-col { order: 0; }
+      .article-img-col { min-height: 300px; }
+      .article-img-col img { position: relative; height: 300px; }
+      .article-text-col { padding: 40px 32px; }
+      .sgr-body { padding: 48px 32px; }
+      .sgr-features { grid-template-columns: 1fr 1fr; }
+      .sgr-label { left: 24px; bottom: 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-content { padding: 0 24px 56px; }
+      .breadcrumb { padding: 11px 24px; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .art-thumbs { grid-template-columns: 1fr; }
+      .sgr-features { grid-template-columns: 1fr; }
+      .sgr-photos { grid-template-columns: 1fr; }
+      .sgr-info-strip { flex-direction: column; align-items: flex-start; }
+      .sgr-body { padding: 40px 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .explore-strip { padding: 56px 24px; }
+      .top-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── TOP BAR (matches site exactly) ── -->
+<div class="top-bar">
+  <span>📍 Morogoro, Tanzania &nbsp;·&nbsp; TTLB Licensed Guide &nbsp;·&nbsp; BSc Wildlife Science</span>
+  <div class="top-bar-social">
+    <a href="https://instagram.com/ghikas_adventures95" aria-label="Instagram" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.92 4.92 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.163.46.349 1.26.403 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.902 4.902 0 01-1.153 1.772 4.92 4.92 0 01-1.772 1.153c-.46.163-1.26.349-2.43.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.902 4.902 0 01-1.772-1.153A4.902 4.902 0 012.566 19.44c-.163-.46-.349-1.26-.403-2.43C2.105 15.744 2.093 15.364 2.093 12.16s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43A4.902 4.902 0 013.72 3.108 4.92 4.92 0 015.492 1.956c.46-.163 1.26-.349 2.43-.403C9.19 2.175 9.57 2.163 12 2.163zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://facebook.com/ghikasadventures" aria-label="Facebook" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.032 4.428 11.03 10.125 11.929v-8.437H7.078v-3.492h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.927-1.956 1.877v2.25h3.328l-.532 3.492h-2.796v8.437C19.572 23.103 24 18.105 24 12.073z"/></svg>
+    </a>
+    <a href="https://tiktok.com/@ghikasadventures" aria-label="TikTok" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+    </a>
+    <a href="https://wa.me/255757247973" aria-label="WhatsApp" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a href="https://linkedin.com/in/jonathan-ghikas" aria-label="LinkedIn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ── NAV (matches site exactly) ── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="brand">Ghikas Adventures</span>
+    <span class="tagline">The Authentic Experience</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="tour-categories/index.html">Tour Categories</a></li>
+    <li><a href="signature-packages.html">Signature Packages</a></li>
+    <li><a href="destinations/index.html">Destinations</a></li>
+    <li><a href="kilimanjaro.html">Kilimanjaro</a></li>
+    <li><a href="souvenirs.html">Souvenirs</a></li>
+    <li><a href="safari-journal.html" class="active">Safari Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-social">
+      <a href="https://instagram.com/ghikas_adventures95" aria-label="Instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://facebook.com/ghikasadventures" aria-label="Facebook" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.032 4.428 11.03 10.125 11.929v-8.437H7.078v-3.492h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.927-1.956 1.877v2.25h3.328l-.532 3.492h-2.796v8.437C19.572 23.103 24 18.105 24 12.073z"/></svg>
+      </a>
+      <a href="https://tiktok.com/@ghikasadventures" aria-label="TikTok" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+      <a href="https://wa.me/255757247973" aria-label="WhatsApp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/jonathan-ghikas" aria-label="LinkedIn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+    <a href="contact.html" class="nav-enquire">Enquire Now</a>
+    <button class="hamburger" id="hamBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── MOBILE DRAWER ── -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <span class="brand">Ghikas Adventures</span>
+    <button class="drawer-close" id="closeDrawer" aria-label="Close menu">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="tour-categories/index.html">Tour Categories</a>
+    <a href="signature-packages.html">Signature Packages</a>
+    <a href="destinations/index.html">Destinations</a>
+    <a href="kilimanjaro.html">Kilimanjaro</a>
+    <a href="souvenirs.html">Souvenirs</a>
+    <a href="safari-journal.html" class="active">Safari Journal</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="drawer-social">
+    <a href="https://instagram.com/ghikas_adventures95" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://facebook.com/ghikasadventures" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.032 4.428 11.03 10.125 11.929v-8.437H7.078v-3.492h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.927-1.956 1.877v2.25h3.328l-.532 3.492h-2.796v8.437C19.572 23.103 24 18.105 24 12.073z"/></svg></a>
+    <a href="https://tiktok.com/@ghikasadventures" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+    <a href="https://wa.me/255757247973" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    <a href="https://linkedin.com/in/jonathan-ghikas" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  </div>
+  <div class="drawer-cta">
+    <a href="contact.html">Enquire Now</a>
+  </div>
+</div>
+
+<!-- ── WA FLOAT ── -->
+<a href="https://wa.me/255757247973" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  Chat with us now
+</a>
+
+<!-- ── BREADCRUMB ── -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>›</span>Safari Journal
+</div>
+
+<!-- ════════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Safari Journal &nbsp;·&nbsp; Ghikas Adventures</span>
+    <h1>Tales from <em>the Wild</em></h1>
+    <p class="hero-sub">Stories, insights and everything you need to know before your Tanzania adventure — written by a wildlife scientist who has lived in this land all his life.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">TTLB Licensed Guide</span>
+      <span class="hero-badge">BSc Wildlife Science</span>
+      <span class="hero-badge">Based in Morogoro</span>
+      <span class="hero-badge">Southern Circuit Specialist</span>
+      <span class="hero-badge">Fiat &amp; Crypto Accepted</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ════════════════════════════════════
+     ARTICLE 1 — WHAT TO EXPECT
+════════════════════════════════════ -->
+<article class="article-card reveal" id="article-1">
+  <div class="article-img-col">
+    <img src="https://images.pexels.com/photos/7334618/pexels-photo-7334618.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Lions in golden light on the Tanzania savannah" loading="lazy" />
+    <span class="img-badge">Safari Guide</span>
+  </div>
+  <div class="article-text-col">
+    <p class="art-eyebrow">Article 01 &nbsp;·&nbsp; Safari Essentials</p>
+    <h2 class="art-title">What to <em>Expect</em> on Safari in Tanzania</h2>
+    <div class="art-divider"></div>
+    <div class="art-body">
+      <p>Tanzania is not just a safari destination — it is <em>the</em> safari destination. Home to the iconic Big Five — lion, elephant, buffalo, leopard and rhinoceros — this land holds some of the most dramatic wildlife encounters on earth. In the Serengeti, over 1.5 million wildebeest and hundreds of thousands of zebras execute the Great Migration in an endless cycle of survival, crossing crocodile-filled rivers in scenes that feel primeval and utterly untouched.</p>
+      <p>Beyond the wildlife, Tanzania's landscapes are staggering in their variety. The lush caldera of Ngorongoro Crater — a UNESCO World Heritage Site — cradles one of the densest concentrations of wildlife anywhere in the world. Tarangire dazzles with ancient baobab trees and vast elephant herds. Lake Manyara surprises with tree-climbing lions and flamingo-fringed shores. And in the south, Nyerere and Ruaha offer wild, remote immersion far from the tourist trail.</p>
+      <p>For accommodation, Tanzania offers everything from luxury tented camps that place you in the heart of the wilderness, to intimate eco-lodges built in harmony with the environment. Game drives at dawn, guided walking safaris through the bush, hot air balloon rides above the endless Serengeti plains — each adds a new dimension to your Tanzania story.</p>
+    </div>
+    <div class="art-thumbs">
+      <div class="art-thumb">
+        <img src="https://images.pexels.com/photos/25950513/pexels-photo-25950513.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ngorongoro Crater aerial view" loading="lazy" />
+        <p class="thumb-cap">Ngorongoro Crater</p>
+      </div>
+      <div class="art-thumb">
+        <img src="https://images.pexels.com/photos/10628684/pexels-photo-10628684.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Maasai cultural scene" loading="lazy" />
+        <p class="thumb-cap">Maasai Culture</p>
+      </div>
+    </div>
+    <ul class="art-highlights">
+      <li>Best season: June–October for peak game viewing during the dry season</li>
+      <li>Big Five possible in Mikumi, Ruaha, Nyerere and Serengeti</li>
+      <li>Maasai village visits available as cultural add-ons to any safari</li>
+      <li>Health: malaria precautions and yellow fever vaccination recommended</li>
+    </ul>
+    <a href="https://wa.me/255757247973?text=Hi+Jonathan!+I+want+to+plan+a+Tanzania+safari" class="art-cta" target="_blank" rel="noopener">
+      Plan your safari
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</article>
+
+<!-- ════════════════════════════════════
+     ARTICLE 2 — SAFARI CHANGES US
+════════════════════════════════════ -->
+<article class="article-card reverse reveal" id="article-2">
+  <div class="article-img-col">
+    <img src="https://images.pexels.com/photos/20852883/pexels-photo-20852883.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Traveller experiencing wonder on an African safari at sunrise" loading="lazy" />
+    <span class="img-badge">The Safari Effect</span>
+  </div>
+  <div class="article-text-col">
+    <p class="art-eyebrow">Article 02 &nbsp;·&nbsp; Safari & Soul</p>
+    <h2 class="art-title">Safari & Adventure <em>Changes Us</em></h2>
+    <div class="art-divider"></div>
+    <div class="art-body">
+      <p>There is something that happens to a person in the wild. It is subtle at first — a quieting of the mind as the city noise falls away, replaced by birdsong and the rustle of tall grass. Then, when a lion lifts its head and meets your gaze across the Mkata floodplain, the world reorganises itself. You realise, deeply and without words, that you are a guest here. And that is a profound and beautiful thing.</p>
+      <p>People who return from safari often speak of a changed perspective. Conservation becomes personal — not an abstract cause, but a felt urgency born from watching a herd of elephants move with intelligence and tenderness across the plains. The tranquility of vast landscapes instils a mindfulness that is hard to find elsewhere: you become present, tuned in to every sound, every shadow, every shift of wind.</p>
+      <p>Physically, the fresh air of the African savannah, the rhythm of early morning game drives, and the pace of walking safaris leave you feeling renewed. Many guests tell us the safari reset their body clock and gave them the best sleep they had known in years. From the primal thrill of being close to dangerous animals, to the quiet satisfaction of watching a sunset paint the sky in fire — a safari leaves its mark long after the journey ends.</p>
+    </div>
+    <div class="art-thumbs">
+      <div class="art-thumb">
+        <img src="https://images.pexels.com/photos/29865515/pexels-photo-29865515.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hot air balloon over the Serengeti at golden dawn" loading="lazy" />
+        <p class="thumb-cap">Balloon over Serengeti</p>
+      </div>
+      <div class="art-thumb">
+        <img src="https://images.pexels.com/photos/37445601/pexels-photo-37445601.png?auto=compress&cs=tinysrgb&w=600" alt="Walking safari with guide in Tanzania" loading="lazy" />
+        <p class="thumb-cap">Walking Safari</p>
+      </div>
+    </div>
+    <ul class="art-highlights">
+      <li>Awe, wonder and a deep reconnection with the natural world</li>
+      <li>Mental peace — the bush pace slows the mind in ways that last months</li>
+      <li>Personal growth through proximity to nature's raw, unpredictable power</li>
+      <li>Many guests return — once the wild finds you, it calls you back</li>
+    </ul>
+    <a href="signature-packages.html" class="art-cta">
+      Explore our packages
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</article>
+
+<!-- ════════════════════════════════════
+     ARTICLE 3 — RELATIONSHIPS
+════════════════════════════════════ -->
+<article class="article-card reveal" id="article-3">
+  <div class="article-img-col">
+    <img src="https://images.pexels.com/photos/16444287/pexels-photo-16444287.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Family on safari vehicle in Tanzania laughing together" loading="lazy" />
+    <span class="img-badge">Family &amp; Groups</span>
+  </div>
+  <div class="article-text-col">
+    <p class="art-eyebrow">Article 03 &nbsp;·&nbsp; Travel & Relationships</p>
+    <h2 class="art-title">Relationships Grow <em>Stronger</em> When You Travel Together</h2>
+    <div class="art-divider"></div>
+    <div class="art-body">
+      <p>Ask any family that has been on safari together and they will tell you: there is a before and an after. Shared adventures create a bond that ordinary life — with its routines and screens and separate schedules — rarely produces. When a herd of elephants materialises from the dust thirty metres from your vehicle and everyone in that truck goes completely silent — that silence is shared. That memory is shared. And it holds people together.</p>
+      <p>Adventures demand teamwork and trust in ways that deepen relationships. You rely on each other, encourage each other, laugh at the same unexpected moments — the time the impala crossed right in front of you, the evening the hippo surfaced beside the boat. Being away from daily distractions creates real space for conversation, and conversations on safari tend to go somewhere meaningful.</p>
+      <p>For couples, a safari sundowner — two chairs facing a golden horizon with the sounds of the bush all around — is one of the most romantic settings on earth. For children, encountering a giraffe face to face, or watching lion cubs tumble through grass, plants a love of nature and a spirit of curiosity that shapes who they become. We have guided three generations of the same family in the same week. That is the gift of a shared adventure.</p>
+    </div>
+    <div class="art-thumbs">
+      <div class="art-thumb">
+        <img src="https://images.pexels.com/photos/27019958/pexels-photo-27019958.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Couple at safari camp sundowner" loading="lazy" />
+        <p class="thumb-cap">Couples Safari</p>
+      </div>
+      <div class="art-thumb">
+        <img src="https://images.pexels.com/photos/7101150/pexels-photo-7101150.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Children with giraffe" loading="lazy" />
+        <p class="thumb-cap">Safari for Kids</p>
+      </div>
+    </div>
+    <ul class="art-highlights">
+      <li>Shared memories that families talk about for decades after</li>
+      <li>Romantic sundowners and private dinners under the African sky</li>
+      <li>Child-friendly game drives with expert naturalist commentary</li>
+      <li>Group pricing available — we specialise in tailored private safaris</li>
+    </ul>
+    <a href="https://wa.me/255757247973?text=Hi+Jonathan!+I+want+to+book+a+family+safari" class="art-cta" target="_blank" rel="noopener">
+      Book a family safari
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</article>
+
+<!-- ════════════════════════════════════
+     ARTICLE 4 — ON YOUR VISIT
+════════════════════════════════════ -->
+<article class="article-card reverse reveal" id="article-4">
+  <div class="article-img-col">
+    <img src="https://images.pexels.com/photos/36841474/pexels-photo-36841474.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Mount Kilimanjaro at sunrise above the clouds" loading="lazy" />
+    <span class="img-badge">Destination Guide</span>
+  </div>
+  <div class="article-text-col">
+    <p class="art-eyebrow">Article 04 &nbsp;·&nbsp; Your Tanzania Visit</p>
+    <h2 class="art-title">On Your <em>Visit</em> to Tanzania</h2>
+    <div class="art-divider"></div>
+    <div class="art-body">
+      <p>Tanzania is a country of extraordinary contrasts, and that is precisely what makes a visit here so unforgettable. From the snow-capped summit of Mount Kilimanjaro — Africa's highest peak at 5,895 metres — to the warm turquoise waters of Zanzibar, from the vast Serengeti plains to the intimate forests of Udzungwa, the variety of experience is simply unmatched anywhere on the continent.</p>
+      <p>Begin in the national parks. Mikumi, our home park here in Morogoro, offers lions, elephants, giraffes and hippos within hours of arrival from Dar es Salaam. Ruaha's remote wilderness rewards those who venture further with vast elephant herds and some of the most dramatic predator action in Africa. Nyerere — Africa's largest protected area — offers boat safaris on the Rufiji River and the rare sight of wild dogs on the open plains.</p>
+      <p>Between game drives, Tanzania's cultural richness awaits. Visit a Maasai boma and learn how these proud pastoralists have coexisted with wildlife for centuries. Browse the vibrant local markets where artisans sell hand-carved wooden pieces, colourful kangas and Tanzania's world-famous tanzanite gemstones. The people of this country are warm, generous and proud — and every interaction adds a layer of meaning to your journey.</p>
+    </div>
+    <div class="art-thumbs">
+      <div class="art-thumb">
+        <img src="https://images.pexels.com/photos/35856106/pexels-photo-35856106.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tanzania local market with colourful fabrics and crafts" loading="lazy" />
+        <p class="thumb-cap">Local Markets</p>
+      </div>
+      <div class="art-thumb">
+        <img src="https://images.pexels.com/photos/17831034/pexels-photo-17831034.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury safari tented camp interior" loading="lazy" />
+        <p class="thumb-cap">Safari Accommodation</p>
+      </div>
+    </div>
+    <ul class="art-highlights">
+      <li>Kilimanjaro: the highest freestanding mountain in the world — climbable year-round</li>
+      <li>Dry season (June–October): best game viewing; wet season (Nov–May): lush and birdlife-rich</li>
+      <li>Zanzibar: combine safari with a beach stay — 90-minute ferry from Dar es Salaam</li>
+      <li>All entry logistics — visas, vaccinations, transfers — we handle everything</li>
+    </ul>
+    <a href="destinations/index.html" class="art-cta">
+      Explore destinations
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</article>
+
+<!-- ════════════════════════════════════
+     SGR TRAIN — FULL-WIDTH SECTION
+════════════════════════════════════ -->
+<section class="sgr-section reveal" id="sgr">
+  <div class="sgr-hero-img">
+    <img src="https://english.news.cn/20241226/f4134445594a463d9557298111ad8b7b/20241226f4134445594a463d9557298111ad8b7b_CnbbeeE007001_20241226_CBMFN0A001.JPG" alt="Tanzania SGR electric train at Dar es Salaam Station, August 2024" loading="lazy" />
+    <div class="sgr-overlay"></div>
+    <div class="sgr-label">
+      <span class="sgr-badge">New · SGR Train Experience</span>
+      <h2>SGR Train Journeys: <em>Modern, Scenic & Unforgettable</em></h2>
+    </div>
+  </div>
+  <div class="sgr-body">
+    <p class="sgr-intro">
+      Discover Tanzania differently — aboard the sleek, state-of-the-art <em>Standard Gauge Railway (SGR)</em>. East Africa's first electric high-speed railway connects Dar es Salaam to Morogoro and beyond in just two hours, cutting travel time in half and offering a cinematic window onto Tanzania's landscapes. For safari travellers arriving from Zanzibar or Dar es Salaam, the SGR is the perfect, relaxed alternative to a short domestic flight.
+    </p>
+    <div class="sgr-features">
+      <div class="sgr-feat">
+        <span class="feat-icon">🚄</span>
+        <h4>World-Class &amp; New</h4>
+        <p>Travel in style on East Africa's first electric railway. Economy, Business and Royal Class seating, air-conditioning, Wi-Fi and onboard service at speeds up to 160 km/h. Comfortable, reliable and eco-friendly.</p>
+      </div>
+      <div class="sgr-feat">
+        <span class="feat-icon">🌄</span>
+        <h4>Breathtaking Landscapes</h4>
+        <p>Watch Tanzania unfold through panoramic windows — coastal plains give way to green hills, then vast savannahs and dramatic mountain backdrops. The scenery itself becomes part of your adventure.</p>
+      </div>
+      <div class="sgr-feat">
+        <span class="feat-icon">🤝</span>
+        <h4>Immerse in Local Culture</h4>
+        <p>The SGR is used daily by Tanzanians from all walks of life. Share the journey, swap stories and experience the warm hospitality that makes this country so special — before you even reach the park gates.</p>
+      </div>
+      <div class="sgr-feat">
+        <span class="feat-icon">✈️</span>
+        <h4>Skip the Airport Hassle</h4>
+        <p>No security queues, no cramped domestic flight. The SGR from Dar es Salaam — or connecting from a Zanzibar ferry — is more comfortable, more scenic and more cost-effective.</p>
+      </div>
+      <div class="sgr-feat">
+        <span class="feat-icon">🦁</span>
+        <h4>Wildlife on the Way</h4>
+        <p>Our road transfers from Morogoro Station travel near the edge of Mikumi National Park. Elephants, giraffes and zebras have been spotted right from the vehicle. Your safari begins the moment you step off the train.</p>
+      </div>
+      <div class="sgr-feat">
+        <span class="feat-icon">🗓️</span>
+        <h4>Seamless Connections</h4>
+        <p>Our team manages station pick-ups, luggage and transfers. We know the schedules, routes and best connections intimately — based right here in Morogoro, this is our home territory.</p>
+      </div>
+    </div>
+    <div class="sgr-photos">
+      <div class="sgr-photo">
+        <img src="https://english.news.cn/20241226/f4134445594a463d9557298111ad8b7b/20241226f4134445594a463d9557298111ad8b7b_CnbbeeE007001_20241226_CBMFN0A002.JPG" alt="Passengers boarding the Tanzania SGR electric train at Dar es Salaam Station" loading="lazy" />
+        <div class="photo-cap">Boarding at Dar es Salaam · Aug 2024</div>
+      </div>
+      <div class="sgr-photo">
+        <img src="https://images.pexels.com/photos/16719084/pexels-photo-16719084.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Wildlife near the road on the Morogoro transfer — safari preview near Mikumi" loading="lazy" />
+        <div class="photo-cap">Wildlife en route · Mikumi Corridor</div>
+      </div>
+    </div>
+    <div class="sgr-info-strip">
+      <div class="sgr-info-item"><strong>~2 hrs</strong><span>Dar es Salaam to Morogoro</span></div>
+      <div class="sgr-info-item"><strong>160 km/h</strong><span>Max passenger speed</span></div>
+      <div class="sgr-info-item"><strong>3 Classes</strong><span>Economy · Business · Royal</span></div>
+      <div class="sgr-info-item"><strong>1M+</strong><span>Passengers since launch 2024</span></div>
+      <div class="sgr-info-item"><strong>Wi-Fi</strong><span>Air-con · Charging ports</span></div>
+    </div>
+    <div class="sgr-cta-block">
+      <p>At Ghikas Adventures, we specialise in seamless SGR + Safari packages. Let us design your perfect itinerary — whether it is a Mikumi day trip, a multi-day Southern Circuit adventure, or a full Tanzania loop combining the train, the parks and Zanzibar.</p>
+      <a href="https://wa.me/255757247973?text=Hi+Jonathan!+I+want+to+book+an+SGR+Safari+package" class="sgr-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Book SGR + Safari Package
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     EXPLORE STRIP
+════════════════════════════════════ -->
+<section class="explore-strip reveal">
+  <h2>Ready for <em>Your Journey?</em></h2>
+  <p>Every safari is different. Every traveller is different. Let us craft something that is entirely yours — based in Morogoro, guided by science, shaped by a lifetime in this land.</p>
+  <div class="explore-btns">
+    <a href="signature-packages.html" class="btn-gold">View All Packages</a>
+    <a href="contact.html" class="btn-outline">Send an Enquiry</a>
+    <a href="https://wa.me/255757247973?text=Hi+Jonathan!+I+want+to+plan+a+safari" class="btn-outline" target="_blank" rel="noopener">WhatsApp Us</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     FOOTER (matches site exactly)
+════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name">Ghikas Adventures</div>
+      <div class="brand-tag">"The Authentic Experience"</div>
+      <p>Tanzania-based safari company. Southern Circuit specialist. Expert-guided journeys from Morogoro.</p>
+      <p class="f-payment">Fiat · Crypto · Bank Transfer Accepted</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/ghikas_adventures95" target="_blank" rel="noopener" aria-label="@ghikas_adventures95">
+          <svg viewBox="0 0 24 24"><path d="M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://facebook.com/ghikasadventures" target="_blank" rel="noopener" aria-label="ghikasadventures">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.032 4.428 11.03 10.125 11.929v-8.437H7.078v-3.492h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.927-1.956 1.877v2.25h3.328l-.532 3.492h-2.796v8.437C19.572 23.103 24 18.105 24 12.073z"/></svg>
+        </a>
+        <a href="https://tiktok.com/@ghikasadventures" target="_blank" rel="noopener" aria-label="@ghikasadventures">
+          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+        <a href="https://wa.me/255757247973" target="_blank" rel="noopener" aria-label="+255 757 247 973">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/jonathan-ghikas" target="_blank" rel="noopener" aria-label="Jonathan Ghikas">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Tours</h4>
+      <ul>
+        <li><a href="signature-packages.html">All Packages</a></li>
+        <li><a href="tour-categories/index.html">Tour Categories</a></li>
+        <li><a href="zanzibar.html">Zanzibar Special</a></li>
+        <li><a href="kilimanjaro.html">Kilimanjaro</a></li>
+        <li><a href="tour-categories/custom.html">Custom Safari</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Destinations</h4>
+      <ul>
+        <li><a href="destinations/nyerere.html">Nyerere</a></li>
+        <li><a href="destinations/mikumi.html">Mikumi</a></li>
+        <li><a href="destinations/ruaha.html">Ruaha</a></li>
+        <li><a href="destinations/udzungwa.html">Udzungwa</a></li>
+        <li><a href="zanzibar.html">Zanzibar</a></li>
+        <li><a href="destinations/serengeti.html">Serengeti</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Jonathan</a></li>
+        <li><a href="souvenirs.html">Souvenirs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mailto:info@ghikasadventures.com">info@ghikasadventures.com</a></li>
+        <li><a href="tel:+255757247973">+255 757 247 973</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Ghikas Adventures · Morogoro, Tanzania</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile drawer
+  const hamBtn = document.getElementById('hamBtn');
+  const drawer = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('mobileOverlay');
+  const closeBtn = document.getElementById('closeDrawer');
+  function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
+  hamBtn.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
